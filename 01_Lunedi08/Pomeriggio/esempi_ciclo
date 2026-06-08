@@ -1,0 +1,43 @@
+
+#----------------------------------------------- CICLO ---------------------------------------------------
+
+#------------------------------- WHILE -------------------------
+
+
+#------------------------------- CICLO MATEMATICO -----------------
+conteggio = 0
+
+while conteggio < 5:     #Fino a quando è vera
+    print(conteggio)
+    conteggio += 1       #Aggiorno la variabile aggiungendo valore
+    
+#------------------------------- CICLO BOOLEANO --------------------
+    controllore = True          
+    
+    while controllore:              #Fin quando è True 
+        print("Ciao")
+        
+        #esercizi
+        scelta = input("Vuoi continuare?")   #Condizione per bloccare il ciclo
+        if scelta == "no":
+            controllore = False
+
+
+#------------------------------- FOR  -------------------------
+numeri = [1,2,3,4]
+
+for i in numeri:          #Itero sulla lista 
+    print(numeri)
+    
+#------------------------------- FOR IN RANGE (start,stop,step) -----------------
+
+for i in range(5):               #Itero 4 volte - 5 è lo stop ed "escluso" [da 0 a 4]
+    print(i)
+
+for i in range (2,8):            #Itero da 2 a 8 escluso - lo start è incluso, lo stop + escluso 
+    print(i)
+
+for i in range(1,10,2):         #Itero da 1 a 10 slatando di 2 - lo start è incluso, salta posizione, fino a 10 escluso
+    print(i)
+
+
