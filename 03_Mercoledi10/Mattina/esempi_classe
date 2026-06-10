@@ -45,3 +45,68 @@ c2 = Calcolatore()                       #Creo una seconda istanza di un oggetto
 Calcolatore.mostra_numero_sitanze()    #Chiamo il metodo di classe per mostrare quante istanze sono state create
 
         
+##############################
+"""
+lista = [x , y]
+lista = [x , y, Libro()]
+
+
+lista[0].stampa()
+
+
+x = lista[0]
+x.stampa()
+
+for el in lista:
+    el.stamap()
+
+"""
+#-------------------------UNDER METHOD-------------------------------------
+class Studente:
+    
+    
+    def __init__(self, nome , eta):
+        self.nome = nome
+        self.eta = eta
+        
+    def __str__(self):                    #Riporta tutto sotto forma di stringa 
+        return "Studente: " + self.nome + ," eta: " + self.eta
+    
+    
+class Squadra:
+    def __init__(self, nome, giocatori):
+        self.nome = nome
+        self.giocatori = giocatori
+        
+    def __len__(self):                    #Riporta la lunghezza
+        return len(self.giocatori)
+squadra1 = Squadra("Tigir" , ["Luca","Paolo"])
+
+print(len(squadra1))
+
+class Moltiplicatore:
+    def __init__(self,numero):
+        self.numero = numero
+        
+    def __call__(self,valore):       #Richiamo l'oggetto 
+        return valore*self.numero
+    
+doppio = Moltiplicatore(2)     #Istanzio oggetto - si passa solo un valore (attributo)
+print(doppio(10))     #Si tratta di un oggetto che "viene" trattao come funzione
+
+
+class Prodotto:
+    
+    def __init__(self, nome , prezzo):
+        self.nome = nome
+        self.prezzo = prezzo
+        
+    def__eq__(self, altro):     #Confronto tra oggetti - se sono uguali o no
+        return self.nome == altro.nome and self.prezzo == altro.prezzo
+    
+prodotto1 = Prodotto("Mouse", 20)
+prodotto2 = Prodotto("Mouse", 20)
+prodotto3 = Prodotto("Tastiera", 35)
+
+print(prodotto1 == prodotto2)   #True
+print(prodotto1 == prodotto3)   #False

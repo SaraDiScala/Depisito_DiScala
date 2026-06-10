@@ -15,20 +15,123 @@ print("Le tue coordinate sono: ", coordinate.x, coordinate.y)       #richiamo og
 
 
 #-------------------  ESERCIZIO 2 ----------------------
-class Libro:
-    def __init__(self,titolo,autore,pagine):
-        self.titolo = titolo
+class Libro:                     #Creo classe
+    def __init__(self,titolo,autore,pagine):     #Inizializzo il metodo con i parametri 
+        self.titolo = titolo                     #Definisco dove prendo il parametro
         self.autore = autore
         self.pagine = pagine
+
+lista_libri = []
+for i in range(3):        
+    titolo = input("Inserisci il titolo del libro: ")    #Variabile per chiedere l'input 
+    autore = input("Inserisci l'autore del libro: ")
+    pagine = int(input("Inserisci il numero di pagine del libro: "))
+    
+    libro1 = Libro(titolo,autore,pagine)   #Creo oggetto libro1 con i valori ricevuti in input, istanziando l'oggetto e metto in lista
+    libro2 = Libro(titolo,autore,pagine)   
+    libro3 = Libro(titolo,autore,pagine)
+    lista_libri.append(libro1)
+    lista_libri.append(libro2)
+    lista_libri.append(libro3)
+    # -----    nuovo_libro = Libro(titolo, autore, pagine)     Posso fare anhe solo una variabile che si riempie piu volte  aciclo 
+    # -----     lista_libri.append(nuovo_libro)
+    
+for l in lista_libri:
+        descrizione = print("Il titolo del libro è" , l.titolo,", l'autore è ", l.autore, "di pagine" ,l.pagine )
+
+
+
+#------------------------------------- ESERCIZIO  MEDIO -------------------------------------------------
+
+class ContoCorrente:  
+#Istanza 
+    def __init__(self,intestatario,saldo = 0):    #Attributi istanza con valore di default 
+        self.intestatario = intestatario
+        self.saldo = saldo
         
-titolo = input("Inserisci il titolo del libro: ")
-autore = input("Inserisci l'autore del libro: ")
-pagine = int(input("Inserisci il numero di pagine del libro: "))
+#Metodo deposita      
+    def deposita(self, importo):     #Funzione per effettuare il deposito 
+        if importo <= 0:                  #Se importo negativo o 0 , stampa errore
+            print("Importo non valido")
+        else:
+            self.saldo += importo  #Altrimenti incrementa il saldo con valore di importo 
+            print("Deposito avvenuto correttamente. Il suo saldo aggiornato è: ", self.saldo)
+#Metodo preleva 
+    def preleva(self, prelievo):
+        if prelievo > 0:
+            self.saldo -= prelievo
+            print("Prelievo avvenuto correttamente. Il suo saldo aggiornato è: ", self.saldo)
+        elif self.saldo < prelievo:
+            print("Il saldo non è sufficiente")
+        else:
+            prelievo <= 0
+            print("Operazione non consentita")
 
-libro1 = Libro(titolo,autore,pagine)     #Creo oggetto libro1 con i valori ricevuti in input
-libro2 = Libro(titolo,autore,pagine)    
-libro3 = Libro(titolo,autore,pagine)
+                    
+#Metodo stampa
+    def stampa_saldo(self):          #Richiamo la classe stessa
+        print("Il saldo di",self.intestatario , "è: ",self.saldo, "€")   #stampo messaggio riportando i parametri della classe
+        
+        
+# TEST 
+cc_rossi = ContoCorrente("Rossi")   #Creo conto
+#Utilozzo dei metodi inseriti nella classe
+cc_rossi.stampa_saldo()   
+cc_rossi.deposita(200)
+cc_rossi.preleva(50)
+cc_rossi.stampa_saldo()
 
-descrizione = print("Il libro" , libro1.titolo, " è stato scritto da", libro1.autore, " ed ha", libro1.pagine, "pagine.")
-descrizione = print("Il libro" , libro2.titolo, " è stato scritto da", libro2.autore, " ed ha", libro2.pagine, "pagine.")
-descrizione = print("Il libro" , libro3.titolo, " è stato scritto da", libro3.autore, " ed ha", libro3.pagine "pagine.")
+
+#------------------------- ESERCIZIO  AVANZATO -------------------------------------
+class Garage():
+    def __init__(self,capienza,auto_presenti):
+        self.capienza = capienza
+        self.auto_presenti = auto_presenti []
+
+
+# METODO PARCHEGGIA
+    def parcheggia(self, targa):                   #Per parcheggiare salviamo la targa 
+        if targa in self.auto_presenti:            #controlliamo se abbiamo in lista la tarrga 
+            print("L'auto è gia parcheggiata nel garage")
+        elif len(self.auto_presenti) >= self.capienza:   #Controllo se c'è spazio o il garage è pieno
+            print("Il garage è pieno, è impossibile parcheggiare l'auto")
+        else:
+            self.auto_presenti.append(targa)            #Inserisco la targa nella lista delle auto presenti 
+            print("La tua auto è stata parcheggiata")      
+# METODO RIMUOVI
+    def rimuovi(self, targa):
+        if targa in self.auto_presenti:         #Controllo se la targa è presente neella lista 
+            self.auto_presenti.remove(targa)    #Rimuovo l'auto 
+            print("Hai ritirato la tua auto")
+        else:
+            print("L'auto non è nel garage")
+            
+# METODO POSTI LIBERI
+    def posti_liberi(self):
+        posti_disponibili = self.capienza - len(self.auto_presenti)  #Variabile osti disponibili = capienza - elementi presenti nella lista 
+        return posti_disponibili
+    
+
+garage = Garage(5)    #Indico la capienza massima 
+
+print("Posti liberi iniziali: " , garage.posti_liberi())  #Controllo quante auto ho adesso
+
+garage.parcheggia("AA111AA")    #Prima auto parcheggiata 
+garage.parcheggia("AA111AA")  #Parcheggio di nuovo la stessa auto 
+
+garage.parcheggia("BB222BB")   #2 auto 
+
+print("Posti liberi: " , garage.posti_liberi())  #Quati posti liberi ci sono adesso 
+
+garage.rimuovi("AA111AA")    #Esce un'auto 
+print("Posti liberi: " , garage.posti_liberi())  #Quati posti liberi ci sono adesso 
+
+
+class Auto:
+    def __init__(self, targa, marca,proprietario):   #istanza con attributi 
+        self.targa = targa 
+        self.marca = marca
+        self.proprietario = proprietario
+
+    def __str__(self):
+        return print("Marca: ", self.marca , "Propietario: " , self.proprietario ,  "Targa:" + self.targa) #stampo tutto sotto forma di stringa
