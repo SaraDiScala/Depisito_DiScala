@@ -1,0 +1,34 @@
+#-------------------  ESERCIZIO 1 ----------------------
+class Punto:
+    coordinate_iniziali = (0,0)     #Imposto attributo iniziale
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    
+dx = int(input("Inserire un valore x: "))       #Creo varibili per richiedere i valori da inserire nell'oggetto
+dy = int(input("Inserire un valore y : "))
+
+coordinate = Punto(dx,dy)                      #Creo l'oggetto con i valori ricevuti dalle variabili dx e dy (richiamando classe)
+print("Le coordinate inziiali sono: ", coordinate.coordinate_iniziali)  #richiamo l'attributo della classe in riferimento a quell'ggetto
+print("Le tue coordinate sono: ", coordinate.x, coordinate.y)       #richiamo oggetto e valori singoli 
+
+
+
+#-------------------  ESERCIZIO 2 ----------------------
+class Libro:
+    def __init__(self,titolo,autore,pagine):
+        self.titolo = titolo
+        self.autore = autore
+        self.pagine = pagine
+        
+titolo = input("Inserisci il titolo del libro: ")
+autore = input("Inserisci l'autore del libro: ")
+pagine = int(input("Inserisci il numero di pagine del libro: "))
+
+libro1 = Libro(titolo,autore,pagine)     #Creo oggetto libro1 con i valori ricevuti in input
+libro2 = Libro(titolo,autore,pagine)    
+libro3 = Libro(titolo,autore,pagine)
+
+descrizione = print("Il libro" , libro1.titolo, " è stato scritto da", libro1.autore, " ed ha", libro1.pagine, "pagine.")
+descrizione = print("Il libro" , libro2.titolo, " è stato scritto da", libro2.autore, " ed ha", libro2.pagine, "pagine.")
+descrizione = print("Il libro" , libro3.titolo, " è stato scritto da", libro3.autore, " ed ha", libro3.pagine "pagine.")

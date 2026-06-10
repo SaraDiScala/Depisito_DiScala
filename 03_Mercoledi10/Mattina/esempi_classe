@@ -1,0 +1,47 @@
+#------------------------------ CLASSE ---------------------
+
+class Automobile:              #Parola chiave + nome (renderla unica )
+                            #Corpo utilizzato come riferimento per creare oggetti
+    numero_di_ruote = 4     #Ogni oggetto avrà una variabile (attibuto) che è inizializzata a 4 - parte con 4 ma si puà modificare
+                                   
+    def __init__(self,marca, modello):    # __init__  costruttore - costuisce l'oggetto - nelle classi è obbligatorio self (nome reale oggetto)
+        self.marca = marca                #per creare l'oggetto servono due attributi -  e gli asegno il parametro
+        self.modello = modello 
+        
+    def stampa_info(self):
+        print("L'automobile è una", self.marca,self.modello)
+        
+auto1 = Automobile("Fiat","500")   #Istanzio oggetto della classe automobile e passo gli attributi 
+auto2 = Automobile("BMW","X3")
+
+auto1.stampa_info()
+auto2.stampa_info()
+
+class Persona:                      #Creo classe
+    def __init__(self,nome,eta):    #definisco gli attributi 
+        self.nome = nome            #indirizzo il paramentro nome a quel attributo di quella classe
+        self.eta = eta 
+
+#Creazione di un oggetto Persona
+p = Persona("Pippo",30)                        #Creo l'oggetto assegnanodgli valori
+
+print(p.nome)
+print(p.eta)
+
+#---------------------------------------------
+class Calcolatore:
+    numero_istanze = 0       #Attributo di classe - è condiviso da tutte le istanze della classe - non è legato a un oggetto specifico
+    
+    def __init__(self):
+        Contatore.numero_istanze += 1      #Ogni volta che viene creata un'istanza, incrementa il contatore
+        
+    @classmethod
+    def mostra_numero_sitanze(cls):      #Metodo di classe - accede all'attributo di classe
+        print(f"Numero di istanze create: {cls.numero_istanze}")
+        
+c1 = Calcolatore()                      #Creo una istanza di un oggetto
+c2 = Calcolatore()                       #Creo una seconda istanza di un oggetto
+
+Calcolatore.mostra_numero_sitanze()    #Chiamo il metodo di classe per mostrare quante istanze sono state create
+
+        
